@@ -2,7 +2,7 @@
 conditional
 ===========
 -------------------------------------------------------------------
-Wrap another context manager and enter it only if condition is true
+Conditionally enter context managers
 -------------------------------------------------------------------
 
 Package Contents
@@ -14,18 +14,25 @@ conditional(condition, contextmanager)
 Overview
 ========
 
-Lorem ipsum.
+The *conditional* context manager comes handy when you want to always
+execute a with block, but only conditionally apply its context
+manager.
 
 Examples
 ========
 
-conditional is used like this::
+Using conditional you can write code like this::
 
     from conditional import conditional
 
-    with conditional(should_ignore_signals(cmd), ignoresignals()):
+    with conditional(has_pager(cmd), ignoresignals()):
         os.system(cmd)
 
-In the above example os.system is always called, but the ignoresignals context
-manager is only entered (and exited) if should_ignore_signals returns True.
+Which is equivalent to::
+
+    if has_pager(cmd):
+        with ignoresignals():
+            os.system(cmd)
+    else:
+        os.system(cmd)
 
