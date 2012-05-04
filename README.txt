@@ -2,7 +2,7 @@
 conditional
 ===========
 -------------------------------------------------------------------
-Conditionally enter context managers
+Conditionally enter a context manager
 -------------------------------------------------------------------
 
 Package Contents

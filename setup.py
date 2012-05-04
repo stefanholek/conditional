@@ -4,7 +4,7 @@ version = '1.0'
 
 setup(name='conditional',
       version=version,
-      description='Conditionally enter context managers',
+      description='Conditionally enter a context manager',
       long_description=open('README.txt').read() + '\n' +
                        open('CHANGES.txt').read(),
       classifiers=[
