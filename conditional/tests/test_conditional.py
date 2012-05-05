@@ -51,3 +51,12 @@ class ConditionalTests(unittest.TestCase):
         with conditional(True, cm):
             raise RuntimeError()
 
+    def test_returning_None_from_exit_lets_exception_propagate(self):
+        cm = self.make_one()
+        flexmock(cm).should_call('__enter__').once
+        flexmock(cm).should_call('__exit__').once
+
+        with self.assertRaises(RuntimeError):
+            with conditional(True, cm):
+                raise RuntimeError()
+
