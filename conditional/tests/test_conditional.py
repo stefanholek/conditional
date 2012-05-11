@@ -7,9 +7,9 @@ from conditional import conditional
 class ConditionalTests(unittest.TestCase):
 
     def make_one(self, **kw):
-        members = dict(__enter__=lambda:None, __exit__=lambda x,y,z:None)
-        members.update(kw)
-        return flexmock(**members)
+        attrs = dict(__enter__=lambda:None, __exit__=lambda x,y,z:None)
+        attrs.update(kw)
+        return flexmock(**attrs)
 
     def test_true_condition_enters_context_manager(self):
         cm = self.make_one()
