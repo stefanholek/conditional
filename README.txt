@@ -14,15 +14,14 @@ conditional(condition, contextmanager)
 Overview
 ========
 
-The *conditional* context manager comes handy when you want to always
+The *conditional* context manager comes handy when you always want to
 execute a with block, but only conditionally want to apply its context
 manager.
 
 Examples
 ========
 
-In this example os.system should always be called, but the ignoresignals
-context manager should only be entered if has_pager returns a true value::
+If you find yourself writing code like this::
 
     if has_pager(cmd):
         with ignoresignals():
@@ -30,7 +29,7 @@ context manager should only be entered if has_pager returns a true value::
     else:
         os.system(cmd)
 
-Using conditional we can write this without duplicating the statement body::
+Consider replacing it with::
 
     from conditional import conditional
 
