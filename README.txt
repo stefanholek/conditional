@@ -15,24 +15,19 @@ Overview
 ========
 
 The *conditional* context manager comes handy when you always want to
-execute a with block but only conditionally want to apply its context
+execute a with-block but only conditionally want to apply its context
 manager.
 
-Examples
-========
+When you find yourself writing code like this::
 
-If you find yourself writing code like this::
-
-    if has_pager(cmd):
-        with ignoresignals():
-            os.system(cmd)
+    if CONDITION:
+        with CONTEXTMANAGER():
+            BODY()
     else:
-        os.system(cmd)
+        BODY()
 
 Consider replacing it with::
 
-    from conditional import conditional
-
-    with conditional(has_pager(cmd), ignoresignals()):
-        os.system(cmd)
+    with conditional(CONDITION, CONTEXTMANAGER()):
+        BODY()
 
