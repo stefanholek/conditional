@@ -31,3 +31,11 @@ Consider replacing it with::
     with conditional(CONDITION, CONTEXTMANAGER()):
         BODY()
 
+Examples
+========
+::
+
+    from conditional import conditional
+
+    with conditional(has_pager(cmd), ignoresignals()):
+        os.system(cmd)
