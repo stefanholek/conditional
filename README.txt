@@ -18,7 +18,7 @@ The *conditional* context manager comes handy when you always want to
 execute a with-block but only conditionally want to apply its context
 manager.
 
-When you find yourself writing code like this::
+If you find yourself writing code like this::
 
     if CONDITION:
         with CONTEXTMANAGER():
@@ -33,7 +33,9 @@ Consider replacing it with::
 
 Examples
 ========
-::
+
+Say we want to ignore signals when a pager application is in the
+foreground, but not otherwise::
 
     from conditional import conditional
 
