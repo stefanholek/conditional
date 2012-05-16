@@ -26,7 +26,7 @@ setup(name='conditional',
       use_2to3=True,
       test_suite='conditional.tests',
       tests_require=[
-        'flexmock',
+          'flexmock',
       ],
       install_requires=[
           'setuptools',
