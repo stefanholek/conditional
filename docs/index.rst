@@ -32,7 +32,7 @@ Consider replacing it with::
 API Documentation
 =================
 
-.. function:: conditional.conditional(condition, contextmanager)
+.. function:: conditional(condition, contextmanager)
 
     Wrap a context manager and enter it only if condition is true.
 
