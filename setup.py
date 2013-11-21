@@ -5,8 +5,8 @@ version = '1.1'
 setup(name='conditional',
       version=version,
       description='Conditionally enter a context manager',
-      long_description=open('README.txt').read() + '\n' +
-                       open('CHANGES.txt').read(),
+      long_description=open('README.rst').read() + '\n' +
+                       open('CHANGES.rst').read(),
       classifiers=[
           'Development Status :: 5 - Production/Stable',
           'Intended Audience :: Developers',
