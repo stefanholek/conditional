@@ -18,7 +18,7 @@ setup(name='conditional',
       keywords='conditional context manager with',
       author='Stefan H. Holek',
       author_email='stefan@epy.co.at',
-      url='http://pypi.python.org/pypi/conditional',
+      url='https://pypi.python.org/pypi/conditional',
       license='BSD',
       packages=find_packages(),
       include_package_data=True,
@@ -27,8 +27,5 @@ setup(name='conditional',
       test_suite='conditional.tests',
       tests_require=[
           'flexmock',
-      ],
-      install_requires=[
-          'setuptools',
       ],
 )
