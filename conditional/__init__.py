@@ -1,3 +1,4 @@
 """The conditional module."""
 
-from conditional import conditional
+from __future__ import absolute_import
+from .conditional import conditional
