@@ -1,3 +1,5 @@
+from __future__ import with_statement
+
 import sys
 import unittest
 
@@ -57,19 +59,11 @@ class ConditionalTests(unittest.TestCase):
         flexmock(cm).should_call('__enter__').once
         flexmock(cm).should_call('__exit__').once
 
-        if sys.version_info >= (2, 7):
-
-            with self.assertRaises(RuntimeError):
-                with conditional(True, cm):
-                    raise RuntimeError()
-
+        try:
+            with conditional(True, cm):
+                raise RuntimeError()
+        except RuntimeError:
+            pass # success
         else:
-
-            try:
-                with conditional(True, cm):
-                    raise RuntimeError()
-            except RuntimeError:
-                pass # success
-            else:
-                self.fail('RuntimeError not raised')
+            self.fail('RuntimeError not raised')
 
