@@ -4,6 +4,11 @@ Changelog
 1.3 - Unreleased
 ----------------
 
+- Add MANIFEST.in.
+  [stefan]
+
+- Release as wheel.
+  [stefan]
 
 1.2 - 2017-02-05
 ----------------
