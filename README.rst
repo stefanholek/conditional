@@ -41,3 +41,11 @@ foreground, but not otherwise::
 
     with conditional(has_pager(cmd), ignoresignals()):
         os.system(cmd)
+
+Documentation
+=============
+
+For further details please refer to the `API Documentation`_.
+
+.. _`API Documentation`: https://conditional.readthedocs.io/en/stable/
+
