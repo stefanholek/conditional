@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.3 - Unreleased
+1.3 - 2019-01-28
 ----------------
 
 - Add MANIFEST.in.
