@@ -11,6 +11,7 @@ conditional |version| -- Conditional Context
    :maxdepth: 2
 
 .. module:: conditional
+.. highlight:: python
 
 The :class:`~conditional.conditional` context manager comes handy when you
 always want to execute a with-block but only conditionally want to apply its
