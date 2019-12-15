@@ -28,4 +28,7 @@ setup(name='conditional',
       tests_require=[
           'flexmock',
       ],
+      extras_require={
+          'testing': ['flexmock'],
+      },
 )
