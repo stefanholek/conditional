@@ -22,12 +22,7 @@ setup(name='conditional',
       url='https://github.com/stefanholek/conditional',
       license='BSD-2-Clause',
       packages=find_packages(),
-      include_package_data=True,
       zip_safe=True,
-      test_suite='conditional.tests',
-      tests_require=[
-          'flexmock',
-      ],
       extras_require={
           'testing': ['flexmock'],
       },
