@@ -4,10 +4,13 @@ Changelog
 1.4 - Unreleased
 ----------------
 
-- Add Python 3.8 to tox.ini. Remove old Python versions.
+- Add Python 3.8-3.10 to tox.ini. Remove old Python versions.
   [stefan]
 
 - Replace deprecated ``python setup.py test`` in tox.ini.
+  [stefan]
+
+- Remove deprecated ``test_suite`` and ``tests_require`` from setup.py.
   [stefan]
 
 1.3 - 2019-01-28
