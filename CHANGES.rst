@@ -13,6 +13,9 @@ Changelog
 - Remove deprecated ``test_suite`` and ``tests_require`` from setup.py.
   [stefan]
 
+- Move metadata to setup.cfg and add a pyproject.toml file.
+  [stefan]
+
 1.3 - 2019-01-28
 ----------------
 
