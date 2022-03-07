@@ -14,7 +14,7 @@ conditional(condition, contextmanager)
 Overview
 ========
 
-The **conditional** context manager comes handy when you always want to
+The `conditional` context manager comes handy when you always want to
 execute a with-block but only conditionally want to apply its context
 manager.
 
