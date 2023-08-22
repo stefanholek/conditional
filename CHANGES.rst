@@ -4,6 +4,17 @@ Changelog
 1.5 - Unreleased
 ----------------
 
+- Update tox.ini for latest tox.
+  [stefan]
+
+- Add GitHub CI workflow.
+  [stefan]
+
+- Add .readthedocs.yaml file.
+  [stefan]
+
+- Pin sphinx and sphinx-rtd-theme versions in docs extra.
+  [stefan]
 
 1.4 - 2022-03-09
 ----------------
