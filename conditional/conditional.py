@@ -18,9 +18,9 @@ class conditional(object):
         if self.condition:
             return self.contextmanager.__enter__()
 
-    def __exit__(self, *args):
+    def __exit__(self, exc_type, exc_val, exc_tb):
         if self.condition:
-            return self.contextmanager.__exit__(*args)
+            return self.contextmanager.__exit__(exc_type, exc_val, exc_tb)
 
     if sys.version_info >= (3, 9):
         __class_getitem__ = classmethod(GenericAlias)
