@@ -1,5 +1,10 @@
 """Conditionally enter a context manager."""
 
+import sys
+
+if sys.version_info >= (3, 9):
+    from types import GenericAlias
+
 
 class conditional(object):
     """Wrap another context manager and enter it only if condition is true.
@@ -16,3 +21,6 @@ class conditional(object):
     def __exit__(self, *args):
         if self.condition:
             return self.contextmanager.__exit__(*args)
+
+    if sys.version_info >= (3, 9):
+        __class_getitem__ = classmethod(GenericAlias)
