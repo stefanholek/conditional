@@ -1,7 +1,8 @@
 import sys
 
-from typing import TypeVar, ContextManager
+from typing import Type, TypeVar, ContextManager
 from typing import Optional, Any
+from types import TracebackType
 
 if sys.version_info >= (3, 9):
     from types import GenericAlias
@@ -17,7 +18,10 @@ class conditional(ContextManager[_T]):
 
     def __enter__(self) -> _T: ...
 
-    def __exit__(self, *args: object) -> Optional[bool]: ...
+    def __exit__(self,
+                 exc_type: Optional[Type[BaseException]],
+                 exc_val: Optional[BaseException],
+                 exc_tb: Optional[TracebackType]) -> Optional[bool]: ...
 
     if sys.version_info >= (3, 9):
         def __class_getitem__(cls, params: Any) -> GenericAlias: ...
