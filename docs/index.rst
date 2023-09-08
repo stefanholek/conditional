@@ -17,7 +17,9 @@ The :class:`~conditional.conditional` context manager comes handy when you
 always want to execute a with-block but only conditionally want to apply its
 context manager.
 
-If you find yourself writing code like this::
+If you find yourself writing code like this:
+
+.. code-block:: python
 
     if CONDITION:
         with CONTEXTMANAGER():
@@ -25,7 +27,9 @@ If you find yourself writing code like this::
     else:
         BODY()
 
-Consider replacing it with::
+Consider replacing it with:
+
+.. code-block:: python
 
     with conditional(CONDITION, CONTEXTMANAGER()):
         BODY()
