@@ -1,4 +1,3 @@
-import sys
 import os
 
 from typing import TYPE_CHECKING
@@ -6,9 +5,6 @@ from typing import Iterator, ContextManager, Optional, Any
 
 from contextlib import contextmanager
 from conditional import conditional
-
-if sys.version_info >= (3, 9):
-    from types import GenericAlias
 
 
 @contextmanager
@@ -55,62 +51,116 @@ class setbool(ContextManager[bool]):
         return None
 
 
+if TYPE_CHECKING:
+    class setfloat(ContextManager[setfloat]):
+        key: str
+        value: float
+        saved: Optional[str]
+
+        def __init__(self, key: str, value: float) -> None:
+            pass
+
+        def __enter__(self) -> setfloat:
+            return self
+
+        def __exit__(self, *exc_info: object) -> Optional[bool]:
+            return None
+
+
+# Inherit from conditional
 class inverted(conditional[Any]):
     def __init__(self, condition: Optional[Any], contextmanager: ContextManager[Any]) -> None:
         super().__init__(not condition, contextmanager)
 
-    @classmethod
-    def __class_getitem__(cls, params: Any) -> GenericAlias:
-        return super().__class_getitem__(params)
-
 
 def f() -> None:
     with setstr('foo', '23') as n:
-        n is None
+        n == None
         n == '23'
+        assert n == '23'
 
     with conditional(True, setstr('foo', '23')) as n:
-        n is None
+        n == None
         n == '23'
+        assert n == '23'
 
     with conditional(None, setstr('foo', '23')) as n:
-        n is None
+        n == None
         n == '23'
+        assert n == None
 
     with conditional([1, 2, 3], setstr('foo', '23')) as n:
-        n is None
+        n == None
         n == '23'
+        assert n == '23'
+
+    with conditional(False, setstr('foo', '23')) as n:
+        n == None
+        n == '23'
+        assert n == None
 
     with conditional(True, setint('bar', 42)) as n:
-        n is None
+        n == None
         n == 42
+        assert n == 42
+
+    with inverted(False, setint('bar', 42)) as n:
+        n == None
+        n == 42
+        assert n == 42
 
     with conditional(True, setbool('baz', True)) as n:
-        n is None
+        n == None
         n == True
-        assert n is True
+        assert n == True
 
     with inverted(False, setbool('baz', True)) as n:
-        n is None
+        n == None
         n == True
-        assert n is True
+        assert n == True
 
     assert issubclass(inverted, conditional)
+
+
+if TYPE_CHECKING:
+    with conditional(True, setfloat('quux', 42.0)) as c:
+        c == None
+        c.key == 'quux'
+        c.value == 42.0
+        c.saved == None
+        c.saved == ''
+        c.__enter__
+        c.__exit__
+
+    with inverted(False, setfloat('quux', 42.0)) as c:
+        c == None
+        c.key == 'quux'
+        c.value == 42.0
+        c.saved == None
+        c.saved == ''
+        c.__enter__
+        c.__exit__
+
+
+if TYPE_CHECKING:
+    conditional.__class_getitem__(None)
+    inverted.__class_getitem__(None)
 
 
 def g() -> None:
     c = conditional(True, setstr('foo', '23'))
     c.condition == True
-    c.contextmanager is None
+    c.contextmanager == None
 
     assert os.environ.get('foo') is None
 
     n = c.__enter__()
     n == '23'
-    assert n == '23'
-    assert os.environ.get('foo') == '23'
-
-    c.__exit__(None, None, None)
+    try:
+        assert n == '23'
+        assert os.environ.get('foo') == '23'
+    finally:
+        c.__exit__(None, None, None)
 
     assert os.environ.get('foo') is None
 
@@ -121,16 +171,17 @@ def g() -> None:
 def h() -> None:
     c = conditional(True, setbool('foo', True))
     c.condition == True
-    c.contextmanager is None
+    c.contextmanager == None
 
     assert os.environ.get('foo') is None
 
     n = c.__enter__()
     n == True
-    assert n == True
-    assert os.environ.get('foo') == 'True'
-
-    c.__exit__(None, None, None)
+    try:
+        assert n == True
+        assert os.environ.get('foo') == 'True'
+    finally:
+        c.__exit__(None, None, None)
 
     assert os.environ.get('foo') is None
 
@@ -139,20 +190,7 @@ def h() -> None:
         c.__exit__(None, RuntimeError(), None)
 
 
-def i() -> None:
-    c = conditional(False, setbool('foo', True))
-    c.condition == False
-
-    assert os.environ.get('foo') is None
-
-    with c as n:
-        n == None
-        assert n == None
-        assert os.environ.get('foo') is None
-
-
 if __name__ == '__main__':
     f()
     g()
     h()
-    i()
