@@ -4,6 +4,9 @@ Changelog
 1.5 - Unreleased
 ----------------
 
+- Add type annotations to the context manager.
+  [stefan]
+
 - Update tox.ini for latest tox.
   [stefan]
 
