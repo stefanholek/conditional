@@ -19,6 +19,9 @@ Changelog
 - Pin sphinx and sphinx-rtd-theme versions in docs extra.
   [stefan]
 
+- Add mypy extra which installs mypy.
+  [stefan]
+
 1.4 - 2022-03-09
 ----------------
 
