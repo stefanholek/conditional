@@ -1,7 +1,7 @@
 import os
 
 from typing import TYPE_CHECKING
-from typing import Iterator, ContextManager, Optional, Any
+from typing import Any, ContextManager, Iterator, Optional, TypeVar
 
 from contextlib import contextmanager
 from conditional import conditional
@@ -72,8 +72,11 @@ if TYPE_CHECKING:
 
 
 # Inherit from conditional
-class inverted(conditional[Any]):
-    def __init__(self, condition: Optional[Any], contextmanager: ContextManager[Any]) -> None:
+_T = TypeVar('_T')
+
+
+class inverted(conditional[_T]):
+    def __init__(self, condition: Optional[Any], contextmanager: ContextManager[_T]) -> None:
         super().__init__(not condition, contextmanager)
 
 
