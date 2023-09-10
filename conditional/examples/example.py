@@ -126,6 +126,16 @@ def f() -> None:
         n == True
         assert n == True
 
+    with conditional[str](True, setstr('foo', '23')) as n:
+        n == None
+        n == '23'
+        assert n == '23'
+
+    with inverted[bool](False, setbool('baz', True)) as n:
+        n == None
+        n == True
+        assert n == True
+
     assert issubclass(inverted, conditional)
 
 
