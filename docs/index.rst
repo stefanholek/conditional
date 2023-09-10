@@ -34,6 +34,9 @@ Consider replacing it with:
     with conditional(CONDITION, CONTEXTMANAGER()):
         BODY()
 
+The context manager ships with type annotations. Type checkers and IDEs can
+use this information to implement type safety and auto completion.
+
 API Documentation
 =================
 
