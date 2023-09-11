@@ -1,2 +1,3 @@
 include LICENSE tox.ini *.rst
+recursive-include conditional/examples *.py
 recursive-include conditional/tests *.py

@@ -4,6 +4,9 @@ Changelog
 1.5 - Unreleased
 ----------------
 
+- Add type annotations to the context manager.
+  [stefan]
+
 - Update tox.ini for latest tox.
   [stefan]
 
@@ -14,6 +17,9 @@ Changelog
   [stefan]
 
 - Pin sphinx and sphinx-rtd-theme versions in docs extra.
+  [stefan]
+
+- Add mypy extra which installs mypy.
   [stefan]
 
 1.4 - 2022-03-09
