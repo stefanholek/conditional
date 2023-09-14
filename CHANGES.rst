@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.5 - Unreleased
+1.5 - 2023-09-14
 ----------------
 
 - Add type annotations to the context manager.
