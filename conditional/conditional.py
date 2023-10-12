@@ -18,9 +18,17 @@ class conditional(object):
         if self.condition:
             return self.contextmanager.__enter__()
 
+    async def __aenter__(self):
+        if self.condition:
+            return await self.contextmanager.__aenter__()
+
     def __exit__(self, exc_type, exc_val, exc_tb):
         if self.condition:
             return self.contextmanager.__exit__(exc_type, exc_val, exc_tb)
+
+    async def __aexit__(self, exc_type, exc_val, exc_tb):
+        if self.condition:
+            return await self.contextmanager.__aexit__(exc_type, exc_val, exc_tb)
 
     if sys.version_info >= (3, 9):
         __class_getitem__ = classmethod(GenericAlias)
