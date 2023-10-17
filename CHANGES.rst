@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.6 - Unreleased
+2.0 - Unreleased
 ----------------
 
 
