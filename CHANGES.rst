@@ -4,6 +4,11 @@ Changelog
 2.0 - Unreleased
 ----------------
 
+- Support asynchronous context managers. Thanks to Dawid Wolski.
+  [stefan]
+
+- Require Python >= 3.5.
+  [stefan]
 
 1.5 - 2023-09-14
 ----------------
