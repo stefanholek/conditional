@@ -34,8 +34,16 @@ Consider replacing it with:
     with conditional(CONDITION, CONTEXTMANAGER()):
         BODY()
 
-The context manager ships with type annotations. Type checkers and IDEs can
-use this information to implement type safety and auto completion.
+Asynchronous context managers are supported since version 2.0:
+
+.. code-block:: python
+
+    async with conditional(CONDITION, ASYNCCONTEXTMANAGER()):
+        BODY()
+
+The :class:`~conditional.conditional` context manager ships with type
+annotations. Type checkers and IDEs can use this information to implement
+type safety and auto completion.
 
 API Documentation
 =================

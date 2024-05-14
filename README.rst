@@ -35,10 +35,20 @@ Consider replacing it with:
     with conditional(CONDITION, CONTEXTMANAGER()):
         BODY()
 
+Async
+=====
+
+`conditional` supports asynchronous context managers:
+
+.. code-block:: python
+
+    async with conditional(CONDITION, ASYNCCONTEXTMANAGER()):
+        BODY()
+
 Typing
 ======
 
-The context manager ships with type annotations. Type checkers and IDEs can
+The package ships with type annotations. Type checkers and IDEs can
 use this information to implement type safety and auto completion.
 
 Examples

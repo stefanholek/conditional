@@ -1,7 +1,7 @@
 import os
 
 from typing import TYPE_CHECKING
-from typing import Any, ContextManager, Iterator, Optional, TypeVar
+from typing import Any, AsyncContextManager, ContextManager, Iterator, Optional, TypeVar
 
 from contextlib import contextmanager
 from conditional import conditional
@@ -68,6 +68,20 @@ if TYPE_CHECKING:
             return self
 
         def __exit__(self, *exc_info: object) -> Optional[bool]:
+            return None
+
+    class asetfloat(AsyncContextManager[asetfloat]):
+        key: str
+        value: float
+        saved: Optional[str]
+
+        def __init__(self, key: str, value: float) -> None:
+            pass
+
+        async def __aenter__(self) -> asetfloat:
+            return self
+
+        async def __aexit__(self, *exc_info: object) -> Optional[bool]:
             return None
 
 
@@ -157,6 +171,16 @@ if TYPE_CHECKING:
         c.saved == ''
         c.__enter__
         c.__exit__
+
+    async def a() -> None:
+        async with conditional(True, asetfloat('quux', 42.0)) as c:
+            c == None
+            c.key == 'quux'
+            c.value == 42.0
+            c.saved == None
+            c.saved == ''
+            c.__aenter__
+            c.__aexit__
 
 
 if TYPE_CHECKING:
