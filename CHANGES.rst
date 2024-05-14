@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.0 - Unreleased
+2.0 - 2024-05-14
 ----------------
 
 - Support asynchronous context managers. Thanks to Dawid Wolski.
