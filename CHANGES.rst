@@ -4,6 +4,8 @@ Changelog
 2.1 - Unreleased
 ----------------
 
+- Remove deprecated license classifier.
+  [stefan]
 
 2.0 - 2024-05-14
 ----------------
