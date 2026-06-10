@@ -6,7 +6,7 @@ if sys.version_info >= (3, 9):
     from types import GenericAlias
 
 
-class conditional(object):
+class conditional():
     """Wrap another context manager and enter it only if condition is true.
     """
 
