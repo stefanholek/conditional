@@ -1,11 +1,13 @@
 Changelog
 =========
 
-2.2 - Unreleased
+2.2 - 2026-07-04
 ----------------
 
+- Fix the release date.
+  [stefan]
 
-2.1 - 2027-07-04
+2.1 - 2026-07-04
 ----------------
 
 - Remove deprecated license classifier.
