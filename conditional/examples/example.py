@@ -56,7 +56,7 @@ class setbool(ContextManager[bool]):
 
 
 if TYPE_CHECKING:
-    class setfloat(ContextManager[setfloat]):
+    class setfloat(ContextManager["setfloat"]):
         key: str
         value: float
         saved: Optional[str]
@@ -64,13 +64,13 @@ if TYPE_CHECKING:
         def __init__(self, key: str, value: float) -> None:
             pass
 
-        def __enter__(self) -> setfloat:
+        def __enter__(self) -> "setfloat":
             return self
 
         def __exit__(self, *exc_info: object) -> Optional[bool]:
             return None
 
-    class asetfloat(AsyncContextManager[asetfloat]):
+    class asetfloat(AsyncContextManager["asetfloat"]):
         key: str
         value: float
         saved: Optional[str]
@@ -78,7 +78,7 @@ if TYPE_CHECKING:
         def __init__(self, key: str, value: float) -> None:
             pass
 
-        async def __aenter__(self) -> asetfloat:
+        async def __aenter__(self) -> "asetfloat":
             return self
 
         async def __aexit__(self, *exc_info: object) -> Optional[bool]:
