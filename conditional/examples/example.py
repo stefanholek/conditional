@@ -1,14 +1,14 @@
 import os
 
 from typing import TYPE_CHECKING
-from typing import Any, AsyncContextManager, ContextManager, Iterator, Optional, TypeVar
+from typing import Any, AsyncContextManager, ContextManager, Generator, Optional, TypeVar
 
 from contextlib import contextmanager
 from conditional import conditional
 
 
 @contextmanager
-def setstr(key: str, value: str) -> Iterator[str]:
+def setstr(key: str, value: str) -> Generator[str]:
     saved = os.environ.get(key)
     os.environ[key] = value
     try:
@@ -21,7 +21,7 @@ def setstr(key: str, value: str) -> Iterator[str]:
 
 
 @contextmanager
-def setint(key: str, value: int) -> Iterator[int]:
+def setint(key: str, value: int) -> Generator[int]:
     saved = os.environ.get(key)
     os.environ[key] = str(value)
     try:
