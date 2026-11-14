@@ -1,6 +1,14 @@
 import sys
 
-from typing import Any, AsyncContextManager, ContextManager, Optional, Type, TypeVar
+from typing import (
+    Any,
+    AsyncContextManager,
+    ContextManager,
+    Optional,
+    Type,
+    TypeVar,
+    Union,
+)
 from types import TracebackType
 
 if sys.version_info >= (3, 9):
@@ -11,12 +19,12 @@ _T = TypeVar("_T")
 
 class conditional(ContextManager[_T], AsyncContextManager[_T]):
     condition: Optional[Any]
-    contextmanager: ContextManager[_T] | AsyncContextManager[_T]
+    contextmanager: Union[ContextManager[_T], AsyncContextManager[_T]]
 
     def __init__(
         self,
         condition: Optional[Any],
-        contextmanager: ContextManager[_T] | AsyncContextManager[_T],
+        contextmanager: Union[ContextManager[_T], AsyncContextManager[_T]],
     ) -> None: ...
 
     def __enter__(self) -> _T: ...
@@ -39,3 +47,4 @@ class conditional(ContextManager[_T], AsyncContextManager[_T]):
 
     if sys.version_info >= (3, 9):
         def __class_getitem__(cls, params: Any) -> GenericAlias: ...
+
