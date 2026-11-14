@@ -8,7 +8,7 @@ from conditional import conditional
 
 
 @contextmanager
-def setstr(key: str, value: str) -> Generator[str]:
+def setstr(key: str, value: str) -> Generator[str, None, None]:
     saved = os.environ.get(key)
     os.environ[key] = value
     try:
@@ -21,7 +21,7 @@ def setstr(key: str, value: str) -> Generator[str]:
 
 
 @contextmanager
-def setint(key: str, value: int) -> Generator[int]:
+def setint(key: str, value: int) -> Generator[int, None, None]:
     saved = os.environ.get(key)
     os.environ[key] = str(value)
     try:
