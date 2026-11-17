@@ -4,6 +4,11 @@ Changelog
 2.3 - Unreleased
 ----------------
 
+- Add ty and pyright tox environments.
+  [stefan]
+
+- Replace mypy with ty in tox.ini and GitHub workflow.
+  [stefan]
 
 2.2 - 2026-07-04
 ----------------

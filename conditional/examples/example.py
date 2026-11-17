@@ -1,14 +1,14 @@
 import os
 
 from typing import TYPE_CHECKING
-from typing import Any, AsyncContextManager, ContextManager, Iterator, Optional, TypeVar
+from typing import Any, AsyncContextManager, ContextManager, Generator, Optional, TypeVar
 
 from contextlib import contextmanager
 from conditional import conditional
 
 
 @contextmanager
-def setstr(key: str, value: str) -> Iterator[str]:
+def setstr(key: str, value: str) -> Generator[str, None, None]:
     saved = os.environ.get(key)
     os.environ[key] = value
     try:
@@ -21,7 +21,7 @@ def setstr(key: str, value: str) -> Iterator[str]:
 
 
 @contextmanager
-def setint(key: str, value: int) -> Iterator[int]:
+def setint(key: str, value: int) -> Generator[int, None, None]:
     saved = os.environ.get(key)
     os.environ[key] = str(value)
     try:
@@ -56,7 +56,7 @@ class setbool(ContextManager[bool]):
 
 
 if TYPE_CHECKING:
-    class setfloat(ContextManager[setfloat]):
+    class setfloat(ContextManager["setfloat"]):
         key: str
         value: float
         saved: Optional[str]
@@ -64,13 +64,13 @@ if TYPE_CHECKING:
         def __init__(self, key: str, value: float) -> None:
             pass
 
-        def __enter__(self) -> setfloat:
+        def __enter__(self) -> "setfloat":
             return self
 
         def __exit__(self, *exc_info: object) -> Optional[bool]:
             return None
 
-    class asetfloat(AsyncContextManager[asetfloat]):
+    class asetfloat(AsyncContextManager["asetfloat"]):
         key: str
         value: float
         saved: Optional[str]
@@ -78,7 +78,7 @@ if TYPE_CHECKING:
         def __init__(self, key: str, value: float) -> None:
             pass
 
-        async def __aenter__(self) -> asetfloat:
+        async def __aenter__(self) -> "asetfloat":
             return self
 
         async def __aexit__(self, *exc_info: object) -> Optional[bool]:

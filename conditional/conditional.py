@@ -31,4 +31,6 @@ class conditional():
             return await self.contextmanager.__aexit__(exc_type, exc_val, exc_tb)
 
     if sys.version_info >= (3, 9):
-        __class_getitem__ = classmethod(GenericAlias)
+        def __class_getitem__(cls, params):
+            return GenericAlias(cls, params)
+
